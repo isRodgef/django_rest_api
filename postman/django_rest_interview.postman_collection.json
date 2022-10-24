@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "dd5686c4-497e-4b7c-9f55-5edf74a3387b",
+		"name": "django_rest_interview",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "small",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "csv_file",
+							"type": "file",
+							"src": "/home/rodger/Desktop/workspace/interview/django_rest_api/test_files/small.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/processFile/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"processFile",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "medium",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "csv_file",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "csv_file",
+							"type": "file",
+							"src": "/home/rodger/Desktop/workspace/interview/django_rest_api/test_files/medium.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/processFile/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"processFile",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "large",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "csv_file",
+							"type": "file",
+							"src": "/home/rodger/Desktop/workspace/interview/django_rest_api/test_files/large.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/processFile/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"processFile",
+						""
+					],
+					"query": [
+						{
+							"key": "csv_file",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
