@@ -6,11 +6,21 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
 from transactions_api.csv_wrapper import CsvWrapper
+from transactions_api.models import TransactionModel
+
 
 class TranactionsNew(APIView):
 
     def post(self, request):
+        #InMemoryUploadedFile for small and medium
+        #<class 'django.core.files.uploadedfile.TemporaryUploadedFile'> for large file
         filename = request.FILES['csv_file'].temporary_file_path()
         csv_reader  = CsvWrapper()
         transaction_list = csv_reader.create_list(filename=filename)
         import code; code.interact(local=dict(globals(), **locals()))
+    
+    def get(self, request):
+        data = TransactionModel.objects.all()
+        return data
+
+
