@@ -17,7 +17,6 @@ class TranactionsNew(APIView):
         filename = request.FILES['csv_file'].temporary_file_path()
         csv_reader  = CsvWrapper()
         transaction_list = csv_reader.create_list(filename=filename)
-        import code; code.interact(local=dict(globals(), **locals()))
     
     def get(self, request):
         data = TransactionModel.objects.all()
