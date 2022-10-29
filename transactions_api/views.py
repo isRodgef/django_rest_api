@@ -19,7 +19,10 @@ class TranactionsNew(APIView):
         transaction_list = csv_reader.create_list(filename=filename)
     
     def get(self, request):
+        country_code = self.request.query_params.get('country_code')
+        date = self.request.query_params.get('date')
         data = TransactionModel.objects.all()
+        import code; code.interact(local=dict(), **locals())
         return data
 
 
