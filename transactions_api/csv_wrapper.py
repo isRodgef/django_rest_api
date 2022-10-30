@@ -14,7 +14,7 @@ def validate(date_text):
 
 class CsvWrapper():
     
-    def __init__(self,serializer_class):
+    def __init__(self,serializer_class,country_wrapper=None):
         self.serializer_class = serializer_class
         pass
 

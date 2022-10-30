@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
-from transactions_api import serializers
+from transactions_api import country_repository, serializers
 from transactions_api.csv_wrapper import CsvWrapper
 from transactions_api.models import TransactionModel
 from transactions_api.serializers import TransactionSerializer
@@ -23,8 +23,10 @@ class TranactionsNew(APIView):
         #<class 'django.core.files.uploadedfile.TemporaryUploadedFile'> for large file
         filename = request.FILES['csv_file'].temporary_file_path()
         _serializer = self.serializer_class
-        csv_reader  = CsvWrapper(_serializer)
+        country_wrapper = country_repository.CountryWrapper(url="")
+        csv_reader  = CsvWrapper(_serializer,country_wrapper=country_wrapper)
         transaction_results = csv_reader.create_list(filename=filename)
+        
        
         #import code; code.interact(local=dict(globals(), **locals()))
 
