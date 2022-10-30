@@ -23,29 +23,21 @@ class TranactionsNew(APIView):
         #<class 'django.core.files.uploadedfile.TemporaryUploadedFile'> for large file
         filename = request.FILES['csv_file'].temporary_file_path()
         _serializer = self.serializer_class
+        #http://api.worldbank.org/v2/country?format=json
         country_wrapper = country_repository.CountryWrapper(url="")
         csv_reader  = CsvWrapper(_serializer,country_wrapper=country_wrapper)
         transaction_results = csv_reader.create_list(filename=filename)
         
-       
-        #import code; code.interact(local=dict(globals(), **locals()))
-
-        #serializers = TransactionSerializer(transaction_list)
-
         return Response(transaction_results)
-        #import code; code.interact(local=dict(globals(), **locals()))
     
     def get(self, request):
-        serializer_class = TransactionSerializer
-
         # endpoint for country collection
-        #http://api.worldbank.org/v2/country?format=json
-        #country_code = self.request.query_params.get('country_code')
-        #date = self.request.query_params.get('date')
+        country_code = self.request.query_params.get('country_code')
+        date = self.request.query_params.get('date')
         data = TransactionModel.objects.all()
-        #data = data.filter(country=country_name)
-        #import code; code.interact(local=dict(), **locals())
-        ret = [] 
+        data = data.filter(date=date)
+        data = data.filter(date=country_code)
+        return data
         
         
 
