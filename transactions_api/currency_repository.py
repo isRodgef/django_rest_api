@@ -22,10 +22,6 @@ class CurrencyWrapper():
         return value * self.rate    
 
 
-    def fetch_info(self, country):
-        return self.country_list[country]
-
-
 if __name__ == '__main__':
     c = CurrencyWrapper('NOK')
     print(c.rate)
