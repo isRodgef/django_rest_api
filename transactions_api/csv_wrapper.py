@@ -14,7 +14,7 @@ def validate(date_text):
 
 class CsvWrapper():
     
-    def __init__(self,serializer_class,country_wrapper=None):
+    def __init__(self,serializer_class):
         self.serializer_class = serializer_class
         pass
 
@@ -42,11 +42,13 @@ class CsvWrapper():
                     }
                     _serializer = self.serializer_class(data=tmp)
                     if _serializer.is_valid():
+                        _serializer.save(tmp)
                         list_of_entries.append(tmp)
                     else:
                         failed_entries.append(tmp)
 
             except Exception as err:
+                failed_entries.append(tmp)
                 import traceback as tb
                 import code; code.interact(local=dict(globals(), **locals()))
         return {"Successful" :list_of_entries, "Failed": failed_entries}
