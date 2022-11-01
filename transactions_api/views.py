@@ -1,3 +1,4 @@
+from collections import defaultdict
 from django.shortcuts import render
 
 # Create your views here.
@@ -11,6 +12,7 @@ from transactions_api.models import TransactionModel
 from transactions_api.serializers import TransactionSerializer
 from rest_framework import generics
 
+
 class TranactionsNew(APIView):
     #queryset =  TransactionModel.objects.all()
     serializer_class = TransactionSerializer
@@ -23,9 +25,10 @@ class TranactionsNew(APIView):
         #<class 'django.core.files.uploadedfile.TemporaryUploadedFile'> for large file
         filename = request.FILES['csv_file'].temporary_file_path()
         _serializer = self.serializer_class
-        #http://api.worldbank.org/v2/country?format=json
-        country_wrapper = country_repository.CountryWrapper(url="")
-        csv_reader  = CsvWrapper(_serializer,country_wrapper=country_wrapper)
+        #country_wrapper = country_repository.CountryWrapper(url="")
+
+
+        csv_reader  = CsvWrapper(_serializer)#,country_wrapper=country_wrapper)
         transaction_results = csv_reader.create_list(filename=filename)
         
         return Response(transaction_results)
@@ -38,8 +41,3 @@ class TranactionsNew(APIView):
         data = data.filter(date=date)
         data = data.filter(date=country_code)
         return data
-        
-        
-
-        return Response(data=ret)
-
