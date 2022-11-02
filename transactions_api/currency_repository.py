@@ -3,6 +3,18 @@ from threading import local
 import requests
 import datetime
 
+from app.cache import function_cache
+
+@function_cache.cache(ttl=15 * 60)
+def get_rate(currency, params):
+    url = "".join(["https://sdw-wsrest.ecb.europa.eu/service/data/EXR/D.", currency ,".EUR.SP00.A"])
+    r = requests.get(url, params)
+    if r.status_code == 200:
+        rate = r.json()['dataSets'][0]['series']['0:0:0:0:0']['observations']['0'][0]
+    else:
+        rate = 0
+    return rate
+
 class CurrencyWrapper():
 
     def __init__(self) -> None:
@@ -14,14 +26,11 @@ class CurrencyWrapper():
         params = {
             'format': 'jsondata',
             'detail': 'dataonly',
-            'updatedAfter': datetime.datetime.now().date()
+            'updatedAfter': str(datetime.datetime.now().date())
         }
-        r = requests.get(self.url, params)
-        if r.status_code == 200:
-            self.rate = r.json()['dataSets'][0]['series']['0:0:0:0:0']['observations']['0'][0]
-        else:
-            self.rate = 0
+        self.rate = get_rate(currency, params)
         return self.rate
+
 
     def convert(self,value):
         return value * self.rate    
