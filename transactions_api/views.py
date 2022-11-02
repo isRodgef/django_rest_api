@@ -25,10 +25,7 @@ class TranactionsNew(APIView):
         #<class 'django.core.files.uploadedfile.TemporaryUploadedFile'> for large file
         filename = request.FILES['csv_file'].temporary_file_path()
         _serializer = self.serializer_class
-        #country_wrapper = country_repository.CountryWrapper(url="")
-
-
-        csv_reader  = CsvWrapper(_serializer)#,country_wrapper=country_wrapper)
+        csv_reader  = CsvWrapper(_serializer)
         transaction_results = csv_reader.create_list(filename=filename)
         
         return Response(transaction_results)
