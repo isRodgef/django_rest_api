@@ -17,8 +17,6 @@ class TranactionsNew(APIView):
     #queryset =  TransactionModel.objects.all()
     serializer_class = TransactionSerializer
 
-
-
     def post(self, request):
 
         #InMemoryUploadedFile for small and medium
@@ -27,7 +25,7 @@ class TranactionsNew(APIView):
         _serializer = self.serializer_class
         csv_reader  = CsvWrapper(_serializer)
         transaction_results = csv_reader.create_list(filename=filename)
-        
+        TransactionModel.objects.bulk_create(transaction_results['Successful'])
         return Response(transaction_results)
     
     def get(self, request):
