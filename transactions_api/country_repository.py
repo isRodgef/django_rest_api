@@ -1,5 +1,4 @@
 from collections import defaultdict
-from itertools import count    
 
 from app.cache import function_cache
 
