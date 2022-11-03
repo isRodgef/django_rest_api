@@ -11,7 +11,7 @@ from transactions_api.csv_wrapper import CsvWrapper
 from transactions_api.models import TransactionModel
 from transactions_api.serializers import TransactionSerializer
 from rest_framework import generics
-
+from django.forms.models import model_to_dict
 
 class TranactionsNew(APIView):
     #queryset =  TransactionModel.objects.all()
@@ -30,9 +30,8 @@ class TranactionsNew(APIView):
     
     def get(self, request):
         # endpoint for country collection
-        country_code = self.request.query_params.get('country_code')
+        country_code = self.request.query_params.get('country')
         date = self.request.query_params.get('date')
-        data = TransactionModel.objects.all()
-        data = data.filter(date=date)
-        data = data.filter(date=country_code)
-        return data
+        data = TransactionModel.objects.filter(date=date,country=country_code)
+        return_result = list(map(lambda x : model_to_dict(x),data))
+        return Response(return_result)
