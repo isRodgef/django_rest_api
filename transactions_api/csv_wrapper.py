@@ -1,6 +1,4 @@
 import csv
-from decimal import localcontext
-from logging.config import dictConfig
 from transactions_api.models import TransactionModel
 from transactions_api.serializers import TransactionSerializer
 from datetime import datetime, timedelta
@@ -42,8 +40,7 @@ class CsvWrapper():
                     }
                     _serializer = self.serializer_class(data=tmp)
                     if _serializer.is_valid():
-                        _serializer.save(tmp)
-                        list_of_entries.append(tmp)
+                        list_of_entries.append(_serializer.save(tmp))
                     else:
                         failed_entries.append(tmp)
 
