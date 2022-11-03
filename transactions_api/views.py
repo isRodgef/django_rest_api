@@ -26,6 +26,9 @@ class TranactionsNew(APIView):
         csv_reader  = CsvWrapper(_serializer)
         transaction_results = csv_reader.create_list(filename=filename)
         TransactionModel.objects.bulk_create(transaction_results['Successful'])
+        to_be_converted = transaction_results['Successful']
+        successes = list(map(lambda x : model_to_dict(x),to_be_converted))
+        transaction_results['Successful'] = successes
         return Response(transaction_results)
     
     def get(self, request):
