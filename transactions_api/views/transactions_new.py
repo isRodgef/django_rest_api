@@ -29,11 +29,3 @@ class TranactionsNew(APIView):
         successes = list(map(lambda x : model_to_dict(x),to_be_converted))
         transaction_results['Successful'] = successes
         return Response(transaction_results)
-    
-    def get(self, request):
-        # endpoint for country collection
-        country_code = self.request.query_params.get('country')
-        date = self.request.query_params.get('date')
-        data = TransactionModel.objects.filter(date=date,country=country_code)
-        return_result = list(map(lambda x : model_to_dict(x),data))
-        return Response(return_result)

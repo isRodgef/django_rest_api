@@ -4,7 +4,7 @@ import  transactions_api.views as api_views
 
 urlpatterns = [
     path('processFile/',view=api_views.TranactionsNew.as_view()),
-   path('retrieveRows/',view=api_views.TranactionsNew.as_view())
+   path('retrieveRows/',view=api_views.TranactionsFetch.as_view())
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
