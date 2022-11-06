@@ -8,7 +8,6 @@ def validate(date_text):
         return datetime.strptime(date_text, '%Y/%m/%d')
     except ValueError:
         return None
-        #raise ValueError("Incorrect data format, should be YYYY-MM-DD")
 
 class CsvWrapper():
     
@@ -22,8 +21,6 @@ class CsvWrapper():
         with open(filename) as file:
             reader = csv.reader(file)
             key_list = next(reader)
-            #import code; code.interact(local=dict(globals(), **locals()))
-            #reader = csv.DictReader(f, delimiter=",")
             try:
                 for read in reader:
                     checked_date = validate(read[key_list.index('Date')])

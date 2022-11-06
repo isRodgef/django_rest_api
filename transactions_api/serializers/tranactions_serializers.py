@@ -24,5 +24,3 @@ class TransactionSerializer(serializers.ModelSerializer):
         transformed_data['net'] = converted_net
         transformed_data['country'] = iso_code
         return TransactionModel(**transformed_data)
-    #def save(self):
-    #    import code; code.interact(local=dict(globals(), **locals()))
