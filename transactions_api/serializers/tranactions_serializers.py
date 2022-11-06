@@ -2,11 +2,10 @@
 from dataclasses import dataclass
 from threading import local
 from rest_framework import serializers
-from transactions_api import currency_repository
 from transactions_api.models import TransactionModel
 
-from transactions_api.country_repository  import CountryWrapper
-from transactions_api.currency_repository import CurrencyWrapper
+from transactions_api.wrappers  import CountryWrapper
+from transactions_api.wrappers import CurrencyWrapper
 
 class TransactionSerializer(serializers.ModelSerializer):
     country_transformer = CountryWrapper()

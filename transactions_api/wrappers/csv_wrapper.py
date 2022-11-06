@@ -46,6 +46,4 @@ class CsvWrapper():
 
             except Exception as err:
                 failed_entries.append(tmp)
-                import traceback as tb
-                import code; code.interact(local=dict(globals(), **locals()))
         return {"Successful" :list_of_entries, "Failed": failed_entries}

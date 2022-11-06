@@ -6,8 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
-from transactions_api import country_repository, serializers
-from transactions_api.csv_wrapper import CsvWrapper
+from transactions_api.wrappers.csv_wrapper import CsvWrapper
 from transactions_api.models import TransactionModel
 from transactions_api.serializers import TransactionSerializer
 from rest_framework import generics
