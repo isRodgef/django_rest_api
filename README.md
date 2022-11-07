@@ -28,9 +28,11 @@ This will expose expose the service on port 8000
     
   There is an exmaple postman (in the postman folder) collection one for each route.
   
-  Code explantion can be found at
+  Code explantion can be found at Code.md
   
-  and Scaling docs can be found at Scale.md
-  code implementation doc can be found at Code.md
+  and 
+  
+  Scaling docs can be found at Scale.md
+
 
 
