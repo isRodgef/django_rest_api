@@ -26,7 +26,7 @@ This will expose expose the service on port 8000
     - Expects a country code and date 
     - Returns all values from db that have the matching date and country
     
-  There is an exmaple postman collection one for each route.
+  There is an exmaple postman (in the postman folder) collection one for each route.
   
   Code explantion can be found at
   
