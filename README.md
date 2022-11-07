@@ -1,7 +1,5 @@
 # django_rest_api
 
-Take home assessment for joinpanda
-
 Basic functionalty 
 
 Django rest api app that has 2 enpoints
@@ -24,10 +22,14 @@ in The root of the repository run
 This will expose expose the service on port 8000
 
 
-
-
 /retrieveRows gets values from db
     - Expects a country code and date 
     - Returns all values from db that have the matching date and country
+    
+  There is an exmaple postman collection one for each route.
+  
+  Code explantion can be found at
+  
+  and Scaling can be found at
 
 
