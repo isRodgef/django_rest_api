@@ -15,3 +15,5 @@ Possible Improvements
  - Add safety checks for db and redis
 
  - Lining using flake8 or pylint and commenting
+
+ - Unit tests need to added as well
