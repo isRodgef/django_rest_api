@@ -30,6 +30,7 @@ This will expose expose the service on port 8000
   
   Code explantion can be found at
   
-  and Scaling can be found at
+  and Scaling docs can be found at Scale.md
+  code implementation doc can be found at Code.md
 
 
