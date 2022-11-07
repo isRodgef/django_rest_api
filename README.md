@@ -1,7 +1,5 @@
 # django_rest_api
 
-Take home assessment for joinpanda
-
 Basic functionalty 
 
 Django rest api app that has 2 enpoints
