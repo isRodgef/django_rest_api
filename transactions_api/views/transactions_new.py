@@ -20,6 +20,7 @@ class TranactionsNew(APIView):
 
         #InMemoryUploadedFile for small and medium
         #<class 'django.core.files.uploadedfile.TemporaryUploadedFile'> for large file
+        # Force use of <class 'django.core.files.uploadedfile.TemporaryUploadedFile'> file uploads
         filename = request.FILES['csv_file'].temporary_file_path()
         _serializer = self.serializer_class
         csv_reader  = CsvWrapper(_serializer)
