@@ -24,7 +24,7 @@ class CsvWrapper():
             try:
                 for read in reader:
                     checked_date = validate(read[key_list.index('Date')])
-                    if checked_date is None:  #will remove later 
+                    if checked_date is None: # null check basically
                         continue
                     str_date = checked_date.strftime("%Y-%m-%d")
                     tmp = {
