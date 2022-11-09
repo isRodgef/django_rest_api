@@ -13,11 +13,9 @@ from rest_framework import generics
 from django.forms.models import model_to_dict
 
 class TranactionsFetch(APIView):
-    #queryset =  TransactionModel.objects.all()
     serializer_class = TransactionSerializer
 
     def get(self, request):
-        # endpoint for country collection
         country_code = self.request.query_params.get('country')
         date = self.request.query_params.get('date')
         data = TransactionModel.objects.filter(date=date,country=country_code)
